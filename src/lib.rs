@@ -68,15 +68,14 @@ impl<T: Copy + Display + Debug + PartialEq + PartialOrd> Queue<T> {
         self.size += 1;
     }
 
-    pub fn dequeue(&mut self)-> Result<(), String>{
-        if self.is_empty(){
-            return  Err(format!("Queue is empty"));
+    pub fn dequeue(&mut self) -> Result<(), String> {
+        if self.is_empty() {
+            return Err(format!("Queue is empty"));
         }
-        if let Some(back) = self.back.take(){
-
-            if let Some(new_back) = back.borrow_mut().next.take(){
+        if let Some(back) = self.back.take() {
+            if let Some(new_back) = back.borrow_mut().next.take() {
                 self.back = Some(new_back)
-            }else{
+            } else {
                 self.back = None;
                 self.front = None;
             }
@@ -84,5 +83,4 @@ impl<T: Copy + Display + Debug + PartialEq + PartialOrd> Queue<T> {
         self.size -= 1;
         Ok(())
     }
-
 }

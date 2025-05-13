@@ -1,19 +1,18 @@
 #[cfg(test)]
-
 use super::*;
 
 #[test]
-fn  test_enqueue(){
+fn test_enqueue() {
     let mut queue: Queue<u32> = Queue::new();
     queue.enqueue(5);
     queue.enqueue(6);
     assert_eq!(queue.size, 2);
     assert_eq!(queue.front().unwrap(), Some(6));
-    dbg!(queue);   
+    dbg!(queue);
 }
 
 #[test]
-fn test_dequeue(){
+fn test_dequeue() {
     let mut queue: Queue<u32> = Queue::new();
     queue.enqueue(5);
     queue.enqueue(6);
